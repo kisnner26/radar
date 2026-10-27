@@ -10,6 +10,7 @@ if (args.includes('-h') || args.includes('--help')) {
 let port = 4848; const hosts = [];
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--port') port = Number(args[++i]);
+  else if (args[i] === '--no-open') continue;
   else if (validHost(args[i])) hosts.push(args[i].toLowerCase());
   else { console.error(`argumento no valido: ${args[i]}`); process.exit(2); }
 }
