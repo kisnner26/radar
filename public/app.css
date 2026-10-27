@@ -33,3 +33,4 @@ canvas{width:100%;height:auto;display:block}
 .spark{height:22px;margin-top:12px;display:block;width:100%}
 .tools{display:flex;gap:8px;margin-top:12px}
 .tools button{padding:6px 14px;font-size:12px}
+.cards.settled .card{animation:none}

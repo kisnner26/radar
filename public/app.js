@@ -56,8 +56,14 @@ function spark(history) {
   return cv;
 }
 
+let lastSig = '';
 function render() {
+  const sig = JSON.stringify(state.hosts.map((h) => [h.host, h.at, h.pending]));
+  if (sig === lastSig) return;
+  const first = lastSig === '';
+  lastSig = sig;
   const box = document.getElementById('cards');
+  box.classList.toggle('settled', !first);
   box.replaceChildren(...state.hosts.slice().sort((a, b) => sev(b) - sev(a)).map(card));
   const bad = state.hosts.filter((h) => sev(h) >= 2).length;
   const slow = state.hosts.filter((h) => sev(h) === 1).length;
